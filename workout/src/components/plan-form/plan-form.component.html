@@ -1,0 +1,22 @@
+<form #MyForm="ngForm" style="margin: 20px;">
+
+    <div style="margin: 20px">
+        <label for="name">
+            <h6>Plan name</h6>
+        </label>
+        <input name="name" [(ngModel)]="newPlan.name" class="form-control" required>
+    </div>
+
+    <div style="margin: 20px">
+        <label for="date">
+            <h6>Select date</h6>
+        </label>
+        <input type="text" name="data" [(ngModel)]="newPlan.date" class="form-control"  bsDatepicker required>
+    </div>
+
+    <div class="footer">
+        <button class="btn btn-success" (click)="sendPlan()" [disabled]="!MyForm.form.valid">Add plan</button>
+        <button  style="margin-left: 10px;" type="button" class="btn btn-dark" data-dismiss="modal" [routerLink]="['/plans']">Back</button>
+    </div>
+
+</form>

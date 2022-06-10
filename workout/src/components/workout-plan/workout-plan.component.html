@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead class="table table-hover">
+            <tr>
+                <th class="table-th">Category</th>
+                <th class="table-th">Exercise</th>
+                <th class="table-th">Reps</th>
+                <th class="table-th">Value</th>
+                <th class="table-th">Done</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let train of training" (click)="goToTraining(train.trainingID)" style="cursor: pointer;"> 
+                <td class="table-td">{{ train.category_name }}</td>
+                <td class="table-td">{{ train.exercise_name }}</td>
+                <td class="table-td">{{ train.reps }}</td>
+                <td class="table-td">{{ train.value }} {{ train.unit_name }}</td>
+                <td class="table-td">
+                    <div class="custom-control custom-checkbox" style="margin-left: 10px;">
+                        <input class="custom-control-input" type="checkbox" id="checked" value="training.done"
+                            [(ngModel)]="train.done" name="done" disabled>
+                        <label class="custom-control-label" for="checked"></label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="footer">
+    <button (click)="addTraining()" type="button" class="btn btn-success">Add</button>
+    <button  style="margin-left: 10px;" type="button" class="btn btn-dark" data-dismiss="modal" [routerLink]="['/plans']">Back</button>
+    <button (click)="deletePlan()" style="float: right;" type="button" class="btn btn-danger">Delete plan</button>
+</div>

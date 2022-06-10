@@ -1,0 +1,23 @@
+<h5 style="margin: 20px; text-align: center;">{{this.exercise.name}}</h5>
+
+<!-- <div style="display: block;">
+    <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="lineChartLabels"
+        [colors]="lineChartColors" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+    </canvas>
+</div> -->
+
+
+<div style="margin: 10px; height: 60%;" class="flex">
+    <div class="flex-item">
+        <div style="display: block;">
+            <canvas baseChart width="400" height="250" [datasets]="lineChartData" [labels]="lineChartLabels"
+                [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+                [chartType]="lineChartType" [plugins]="lineChartPlugins"></canvas>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <button style="width: 20%;" type="button" class="btn btn-dark" data-dismiss="modal" (click)="back()">Back</button>
+</div>

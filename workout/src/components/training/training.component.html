@@ -1,0 +1,87 @@
+<!-- Add workoutplan from -->
+<form #MyForm="ngForm" *ngIf="(trainingID == 0)" style="margin: 20px;">
+    <h5>Add training</h5>
+    <div>
+        <label for="category_name">Category</label>
+        <ng-select [items]="categories" bindLabel="name" [clearable]="false" name="category_name"
+        (change)="onChange($event)"
+        [(ngModel)]="newTraining.categoryID" required></ng-select>
+    </div>
+
+    <div>
+        <label for="exercise_name">Exercise</label>
+        <ng-select class="custom" [items]="exercises" bindLabel="name" [clearable]="false" name="exercise_name"
+        (change)="onChange1($event)" [(ngModel)]="newTraining.exerciseID"
+             required></ng-select>
+    </div>
+
+    <div>
+        <label for="reps">Reps</label>
+        <input class="custom" name="reps" [(ngModel)]="newTraining.reps" class="form-control" required>
+    </div>
+
+    <div>
+        <label for="value">Value</label>
+        <input class="custom" name="value" [(ngModel)]="newTraining.value" class="form-control" required>
+    </div>
+    <div>
+        <label for="unit_name">Unit</label>
+        <ng-select class="custom" [items]="units" bindLabel="name" [clearable]="false" 
+            name="unit_name" [(ngModel)]="newTraining.unit_name" required></ng-select>
+    </div>
+
+    <div class="custom-control custom-checkbox" style="margin-top: 10px;">
+        <input class="custom-control-input" type="checkbox" id="checked" [(ngModel)]="newTraining.done" name="done">
+        <label class="custom-control-label" for="checked">Done</label>
+    </div>
+
+    <div class="footer">
+        <button class="btn btn-success" (click)="sendTraining()" [disabled]="!MyForm.form.valid">Save</button>
+        <button  style="margin-left: 10px;" type="button" class="btn btn-dark" data-dismiss="modal" (click)="back()">Back</button>
+    </div>
+</form>
+
+<!-- Edit workoutplan from -->
+<form #MyForm="ngForm" *ngIf="(trainingID != 0)" style="margin: 20px;">
+    <h5>Edit training</h5>
+    <div>
+        <label for="category_name">Category</label>
+        <ng-select [items]="categories" bindLabel="name" [clearable]="false" aria-placeholder="training.category_name"
+          name="category_name" [(ngModel)]="training.category_name" required></ng-select>
+    </div>
+
+    <div>
+        <label for="exercise_name">Exercise</label>
+        <ng-select class="custom" [items]="exercises" bindLabel="name" [clearable]="false" aria-placeholder="training.exercise_name"
+            name="exercise_name" [(ngModel)]="training.exercise_name" required></ng-select>
+    </div>
+
+    <div>
+        <label for="reps">Reps</label>
+        <input class="custom" aria-placeholder="training.reps" name="reps" [(ngModel)]="training.reps"
+            class="form-control" required>
+    </div>
+
+    <div>
+        <label for="value">Value</label>
+        <input class="custom" aria-placeholder="training.value" name="value" [(ngModel)]="training.value"
+            class="form-control" required>
+    </div>
+
+    <div>
+        <label for="unit_name">Unit</label>
+        <ng-select class="custom" [items]="units" bindLabel="name" [clearable]="false" aria-placeholder="training.unit"
+            name="unit_name" [(ngModel)]="training.unit_name" disabled></ng-select>
+    </div>
+
+    <div class="custom-control custom-checkbox" style="margin-top: 10px;">
+        <input class="custom-control-input" type="checkbox" id="checked" value="training.done" [(ngModel)]="training.done" name="done">
+        <label class="custom-control-label" for="checked">Done</label>
+    </div>
+
+    <div class="footer">
+        <button class="btn btn-success" (click)="editTraining()" [disabled]="!MyForm.form.valid">Save</button>
+        <button style="margin-left: 10px;" type="button" class="btn btn-dark" (click)="back()">Back</button>
+        <button style="float: right;" class="btn btn-danger" (click)="deleteTraining()">Delete</button>
+    </div>
+</form>

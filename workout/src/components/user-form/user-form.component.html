@@ -1,0 +1,44 @@
+<table>
+    <tr *ngFor="let user of userList">
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password}}</td>
+        <td><span (click)="onEditClick($event, user)">&nbsp; &nbsp; Edit &nbsp; &nbsp; </span></td>
+        <td><span (click)="onDeleteClick($event, user)">Delete</span></td>
+    </tr>
+</table>
+
+
+<div class="container">
+    <div [hidden]="submitted">
+        <h1>User Form</h1>
+        <form  #userForm="ngForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="user.name" name="name"
+                    #name="ngModel">
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    Name is required
+                </div>
+
+
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" required [(ngModel)]="user.email" name="email"
+                    #name="ngModel">
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    Email is required
+                </div>
+
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" required [(ngModel)]="user.password" name="password"
+                    #name="ngModel">
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    Email is required
+                </div>
+            </div>
+
+            <button (click)="addUser()" class="btn btn-success" [disabled]="!userForm.form.valid">Add user</button>
+            <br>
+            <button (click)="updateUser()" class="btn btn-success" [disabled]="!userForm.form.valid">Edit</button>
+        </form>
+    </div>

@@ -1,0 +1,34 @@
+<table  id="accordion" class="table">
+  <thead>
+    <tr>
+      <th  class="table-th"><h5>Exercises:</h5></th>
+    </tr>
+  </thead>
+  <tbody  *ngFor="let cat of categoriesList; let in = index">
+    <tr data-toggle="collapse" [attr.data-target]="'#test' + in" class="accordion-toggle">
+      <td style=" cursor: pointer;" class="table-td"><h6>{{cat.name}} exercises</h6></td>
+    </tr>
+    <tr>
+
+        <div class="accordian-body collapse" id="test{{in}}" data-parent="#accordion">
+          <table class="table table-dark">
+            <thead class="thead-dark">
+              <tr>
+                <th class="table-th">Name</th>
+                <th class="table-th">Unit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let exe of exerciseList">
+                <td *ngIf="cat.categoryID==exe.categoryID" class="table-td">{{exe.name}}</td>
+                <td *ngIf="cat.categoryID==exe.categoryID" class="table-td">{{unity(exe.unitID)}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+    </tr>
+  </tbody>
+</table>
+
+

@@ -1,0 +1,30 @@
+<div class="container" style="padding-top: 20px;">
+
+    <!--Alert panel-->
+    <div class="alert alert-danger" role="alert" [hidden]="!errorAlertModel.visible">
+        <strong>Failed!</strong> {{ errorAlertModel.text }}
+        <button type="button" class="close" (click)="errorAlertModel.visible=false">
+            <span>&times;</span>
+        </button>
+    </div>
+
+    <h4>Login</h4>
+    <form #userForm="ngForm">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" required name="email" [(ngModel)]="credentials.email"
+                #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <div [hidden]="email.valid || email.untouched" class="error text-danger">
+                <div [hidden]="!email.hasError('pattern')">Invalid email</div>
+                <div *ngIf="(!credentials.email || credentials.email.length == 0)">Email required</div>
+            </div>
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" required name="password"
+                [(ngModel)]="credentials.password">
+        </div>
+        <button class="btn btn-success" style="margin-right: 10px;" (click)="login()"
+            [disabled]="!userForm.form.valid">Submit</button>
+        <button class="btn btn-info" [routerLink]="['/register']">Register</button>
+
+    </form>
+</div>

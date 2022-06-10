@@ -1,0 +1,22 @@
+<h5 style="margin: 20px; text-align: center;">Select exercise to view chart</h5>
+
+<form #MyForm="ngForm" style="margin: 20px;">
+    <div>
+        <label for="category_name">Category</label>
+        <ng-select [items]="categories" bindLabel="name" [clearable]="false" name="category_name"
+            (change)="onChange($event)" [(ngModel)]="newTraining.categoryID" required></ng-select>
+    </div>
+
+    <div>
+        <label for="exercise_name">Exercise</label>
+        <ng-select class="custom" [items]="exercises" bindLabel="name" [clearable]="false" name="exercise_name"
+        (change)="onChange1($event)" [(ngModel)]="newTraining.exerciseID" required></ng-select>
+    </div>
+
+
+<div class="footer">
+    <button class="btn btn-success" (click)="showChart()" [disabled]="!MyForm.form.valid">View chart</button>
+    <button  style="margin-left: 10px;" type="button" class="btn btn-dark" data-dismiss="modal" (click)="back()">Back</button>
+</div>
+
+</form>

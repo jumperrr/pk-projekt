@@ -1,0 +1,10 @@
+.btn.btn-outline-success:hover, .btn.btn-outline-success:active{
+    color:rgb(255, 255, 255);
+}
+
+.btn.btn-warning{
+    color: rgb(255, 255, 255);
+}
+th{
+    width: auto;
+}

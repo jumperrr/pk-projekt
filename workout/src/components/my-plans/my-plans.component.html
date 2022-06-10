@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead class="table table-hover">
+    <tr>
+      <th class="table-th">Date</th>
+      <th class="table-th">Plan name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="cursor: pointer;" *ngFor="let plan of workoutplan | paginate: { itemsPerPage: 7, currentPage: page }"
+      (click)="goToPlan(plan.workoutplanID)">
+      <td class="table-td">{{plan.date | date:'EEEE, d/M/yyyy'}}</td>
+      <td class="table-td">{{ plan.name}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div style="text-align: center;">
+  <pagination-controls (pageChange)="page = $event" autoHide="true" responsive="true" previousLabel="" nextLabel="">
+  </pagination-controls>
+  <button [routerLink]="['/newplan/0']" style="margin: 5px; width: 40%;" type="button" class="btn btn-success">Add
+    plan</button>
+</div>

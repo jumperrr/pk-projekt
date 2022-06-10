@@ -1,0 +1,20 @@
+a.nav-link.logout:hover{
+
+color: rgb(250, 144, 144);
+}
+
+a.nav-link.logout{
+    color: rgb(255, 73, 28);
+    cursor: pointer;
+}
+
+a.nav-link.menu{
+    color: rgb(202, 202, 202);
+    cursor: pointer;
+}
+
+
+a.nav-link.menu:hover{
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+}
